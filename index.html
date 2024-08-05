@@ -423,42 +423,49 @@ h1 {
     
  
     
-    document.getElementById('searchButton').addEventListener('click', function () {
-        var query = document.getElementById('searchInput').value.trim().toLowerCase();
-        var resultDiv = document.getElementById('result');
+var dsaTerms = ['dsa', 'datastructure and algorithm', 'data structures and algorithms', 'data structures', 'algorithm'];
+var pythonTerms = ['python', 'python programming', 'oop with python'];
+var osTerms = ['os', 'operating system', 'operating systems'];
+var dbmsTerms = ['dbms', 'data base management system', 'database management system'];
+var daaTerms = ['daa', 'design and analysis of algorithm'];
+var cTerms = ['c', 'c programming', 'c language', 'language c'];
+var computerNetworksTerms = ['computer networks', 'cn', 'networking'];
+var javaTerms = ['java', 'java programming', 'java language', 'java oop'];
 
-        // Define arrays for each search term category
-        var dsaTerms = ['dsa', 'datastructure and algorithm', 'data structures and algorithms', 'data structures', 'algorithm'];
-        var pythonTerms = ['python', 'python programming', 'oop with python'];
-        var osTerms = ['os', 'operating system', 'operating systems'];
-        var dbmsTerms = ['dbms', 'data base management system', 'database management system'];
-        var daaTerms = ['daa', 'design and analysis of algorithm'];
-        var cTerms = ['c', 'c programming', 'c language', 'language c'];
-        var computerNetworksTerms = ['computer networks', 'cn', 'networking'];
-        var javaTerms = ['java','JAVA', 'java programming', 'JAVA language', 'java oop'];
-        // Redirect based on the search query
-        if (query === '') {
-            resultDiv.innerHTML = '<p>Please enter a search term.</p>';
-        } else if (dsaTerms.includes(query)) {
-            window.location.href = 'DSA.html';
-        } else if (pythonTerms.includes(query)) {
-            window.location.href = 'python.html';
-        } else if (osTerms.includes(query)) {
-            window.location.href = 'OPERATINGSYSTEM.HTML';
-        } else if (dbmsTerms.includes(query)) {
-            window.location.href = 'DBMS.html';
-        } else if (daaTerms.includes(query)) {
-            window.location.href = 'DAA.html';
-        } else if (cTerms.includes(query)) {
-            window.location.href = 'C.HTML';
-        } else if (computerNetworksTerms.includes(query)) {
-            window.location.href = 'COMPUTER.html';
-        } else if (javaTerms.includes(query)) {
-            window.location.href = 'JAVA.html';
-        } else {
-            resultDiv.innerHTML = '<p>No results found for: ' + query + '</p>';
-        }
-    });
+// Function to normalize query strings
+function normalizeQuery(query) {
+    return query.trim().toLowerCase();
+}
+
+// Redirect based on the search query
+document.getElementById('searchButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent form submission
+    var query = document.getElementById('searchInput').value;
+    var normalizedQuery = normalizeQuery(query);
+    var resultDiv = document.getElementById('resultDiv');
+
+    if (normalizedQuery === '') {
+        resultDiv.innerHTML = '<p>Please enter a search term.</p>';
+    } else if (dsaTerms.includes(normalizedQuery)) {
+        window.location.href = 'DSA.html';
+    } else if (pythonTerms.includes(normalizedQuery)) {
+        window.location.href = 'python.html';
+    } else if (osTerms.includes(normalizedQuery)) {
+        window.location.href = 'OPERATINGSYSTEM.HTML';
+    } else if (dbmsTerms.includes(normalizedQuery)) {
+        window.location.href = 'DBMS.html';
+    } else if (daaTerms.includes(normalizedQuery)) {
+        window.location.href = 'DAA.html';
+    } else if (cTerms.includes(normalizedQuery)) {
+        window.location.href = 'C.HTML';
+    } else if (computerNetworksTerms.includes(normalizedQuery)) {
+        window.location.href = 'COMPUTER.html';
+    } else if (javaTerms.includes(normalizedQuery)) {
+        window.location.href = 'JAVA.html';
+    } else {
+        resultDiv.innerHTML = '<p>No results found for: ' + query + '</p>';
+    }
+});
 
     document.getElementById('searchInput').addEventListener('click', function () {
         // Additional functionality can be added here if needed
